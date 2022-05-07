@@ -161,11 +161,15 @@ textSize(15);
 textAlign(CENTER);
 text("=   Light", width / 1.85, height / 3.5);
 text("=   Rain", width / 1.87, height  / 2.8);
-text(" Press ← → ↑ ↓ to move the butterfly", width * 0.5, height * 0.42);
+text(" Press ← → ↑ ↓ to move the butterfly", width/2, height * 0.42);
 
 fill(255);
 textSize(20);
 text("Help! Safely guide the butterfly through the storm. Its a cold and rainy day so try to avoid as much RAIN and collect the LIGHT to keep the butterfly warm. Safe travels!", width / 2, height / 1.8, 450);
+fill(255);
+textSize(20);
+text("Click anywhere to start", width / 2, height / 1.18);
+
 
 strokeWeight(3);
 stroke(255);
@@ -174,7 +178,7 @@ textSize(40);
 textAlign(CENTER);
 text("Tutorial", width/2, height * 0.12);
 
-image(playerImg, w/2, h/1.15);
+image(playerImg, w/2, h/1.11);
 
 }
 
