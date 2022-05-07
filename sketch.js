@@ -48,6 +48,10 @@ function draw() {
       title();
       cnv.mouseClicked(titleMouseClicked);
       break;
+    case 'tutorial':
+      tutorial();
+      cnv.mouseClicked(tutorialMouseClicked);
+      break;
     case 'level 1':
       level1();
       cnv.mouseClicked(level1MouseClicked);
@@ -139,6 +143,43 @@ function title(){
 
 function titleMouseClicked(){
   console.log('canvas is clicked on title page');
+  state = 'tutorial'
+}
+
+function tutorial(){
+  image(titleImg,  w/2, h/2, 600, 600);
+  fill(255);
+  rect(width * .5, height * .345, 345, 135, 10);
+
+image(coinImg, 250, 165);
+image(enemyImg, 250, 206);
+
+strokeWeight(0);
+stroke(0);
+fill(0);
+textSize(15);
+textAlign(CENTER);
+text("=   Light", width / 1.85, height / 3.5);
+text("=   Rain", width / 1.87, height  / 2.8);
+text(" Press ← → ↑ ↓ to move the butterfly", width * 0.5, height * 0.42);
+
+fill(255);
+textSize(20);
+text("Help! Safely guide the butterfly through the storm. Its a cold and rainy day so try to avoid as much RAIN and collect the LIGHT to keep the butterfly warm. Safe travels!", width / 2, height / 1.8, 450);
+
+strokeWeight(3);
+stroke(255);
+fill(0);
+textSize(40);
+textAlign(CENTER);
+text("Tutorial", width/2, height * 0.12);
+
+image(playerImg, w/2, h/1.15);
+
+}
+
+function tutorialMouseClicked(){
+  console.log('canvas is clicked on title page');
   state = 'level 1'
 }
 
@@ -227,6 +268,10 @@ function level1MouseClicked(){
 function youWin(){
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
+
+  strokeWeight(3);
+  stroke(255);
+  fill(0);
   textSize(80);
   text('YOU WIN', w/2, h/2);
 
