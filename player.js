@@ -3,7 +3,7 @@ class Player{
     this.r = 100; // this is actually the diameter and not radius!
     this.x = w/2;
     this.y = h - this.r;
-    this.speed = 8;
+    this.speed = 11;
     this.direction = 'still';
   }
 

@@ -65,7 +65,17 @@ function draw() {
   }
 }
 
-function keyPressed(){
+function keyPressed() {
+// Press "s" to change state - change state not functional
+//   if (state === 'title' || state === 'you win') {
+//   if (key === 's' || key === 'S') {
+//   state = 'level l';
+// }
+// } else if (state === 'level 1') {
+//   if (key === 's' || key === 'S' ) {
+//
+// }
+
   if (keyCode == LEFT_ARROW){
     player.direction = 'left'
   } else if (keyCode == RIGHT_ARROW) {
@@ -115,7 +125,7 @@ function title(){
   text('CHANCE', w/2, h/5);
 
   textSize(30);
-  text('click anywhere to start', w/2, h/2);
+  text('press "s" to start', w/2, h/2);
 
 }
 
@@ -130,7 +140,7 @@ function level1(){
   // imageMode(CENTER);
   // image(bckgImg, w/2, h/2, 600, 600);
 
-  if (random(1) <= 0.04){
+  if (random(1) <= 0.01){
     coins.push(new Coin());
   }
 
@@ -184,12 +194,12 @@ function level1(){
     }
   }
 
-  text(`points: ${points}`, w/4, h - 30);
+  text(`score: ${points} / 1000`, w/4, h - 30);
 
 // check point values to win or lose the game
   if (points >= 1000){
     state = 'you win';
-  } else if (points <= -100){
+  } else if (points <= -1){
     state = 'game over';
   }
 
