@@ -24,8 +24,8 @@ function preload(){
 }
 
 function setup(){
- bckgImg = loadImage('assets/background1.png');
- titleImg = loadImage('assets/title_bg.png');
+ bckgImg = loadImage('assets/level_bckg.png');
+ titleImg = loadImage('assets/background.png');
 
  cnv = createCanvas(w, h);
   //frameRate(200);
@@ -119,13 +119,21 @@ function keyReleased(){
 function title(){
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
-  textSize(80);
-  fill(255);
-  textAlign(CENTER);
-  text('CHANCE', w/2, h/5);
 
+  image(playerImg, w/2, h/1.8)
+  image(coinImg, w/2, h/3.2, 200, 200);
+
+  strokeWeight(3);
+  stroke(255);
+  textSize(80);
+  fill(0);
+  textAlign(CENTER);
+  text('CHANCE', w/2, h/2.5);
+
+  noStroke();
   textSize(30);
-  text('press "s" to start', w/2, h/2);
+  fill(255);
+  text('click anywhere to start', w/2, h/1.4);
 
 }
 
@@ -193,7 +201,9 @@ function level1(){
       console.log('enemy is out of town');
     }
   }
-
+  strokeWeight(3)
+  stroke(255);
+  fill(0);
   text(`score: ${points} / 1000`, w/4, h - 30);
 
 // check point values to win or lose the game
@@ -220,8 +230,12 @@ function youWin(){
   textSize(80);
   text('YOU WIN', w/2, h/2);
 
+  noStroke();
   textSize(30);
-  text('click anywhere to restart', w/2, h * 3/4);
+  fill(255);
+  text('click anywhere to restart', w/2, h / 1.5);
+
+  image(coinImg, w/2, h/2.8, 45, 50);
 }
 
 function youWinMouseClicked(){
@@ -232,6 +246,9 @@ function youWinMouseClicked(){
 function gameOver(){
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
+
+
+  image(enemyImg, w/2, h/3.7, 45, 50);
   textSize(80);
 
 
@@ -239,17 +256,27 @@ function gameOver(){
   if (lives >= 0){
 
     //display number lives to the screen
+    strokeWeight(3);
+    stroke(255);
+    fill(0);
     text(`Lives left: ${lives}`, w/2, h/2);
 
+    noStroke();
     textSize(30);
-    text('click anywhere to play again', w/2, h * 3/4);
+    fill(255);
+    text('click anywhere to play again', w/2, h / 1.5);
 
   } else {
     // game over
+    strokeWeight(3);
+    stroke(255);
+    fill(0);
     text('Game Over', w/2, h/2);
 
+    noStroke();
+    fill(255);
     textSize(30);
-    text('click anywhere to restart', w/2, h * 3/4);
+    text('click anywhere to restart', w/2, h / 1.5);
   }
 }
 
