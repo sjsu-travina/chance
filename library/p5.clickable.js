@@ -69,7 +69,7 @@ function Clickable(x,y) {
 	this.textSize = 12;		//Size for the text shown
 	this.textFont = "sans-serif";	//Font for the text shown
 	this.textScaled = false;     //Scale the text with the size of the clickable
-	
+
 	// image options
 	this.image = null; // image object from p5loadimage()
 	this.fitImage = false; // when true, image will stretch to fill button
@@ -142,7 +142,7 @@ function Clickable(x,y) {
 				imgHeight = this.height;
 			}
 		}
-		
+
 		image(this.image, centerX, centerY, imgWidth * this.imageScale, imgHeight * this.imageScale);
 
 		if(this.tint && !this.noTint){

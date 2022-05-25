@@ -1,15 +1,22 @@
+## Artist Statement
+
+Chance is a keyboard game meant to replicate the hurdles we go through on a daily basis. Such as for myself, I've gone through days of sadness, but luckily I was able to overcome those days and into a much brighter and joyest day. In time, there will be brighter and joyest days for you too. In this game, the player will be able to guide a butterfly through a stormy day and into a brighter one. The player will use the arrow keys to maneuver the butterfly. Avoid as much rain as possible and catch enough light to keep the butterfly dry/warm.
+
+
 ## Timeline
 
-4/25  Incorporate clickable files and an asset file to a repository for images. Begin adjusting the repository by rearranging where the clickable images will be.
+5/11 work on adding more levels to my game - include 3 levels; debug any issues
 
-4/26 Start creating a ‘Title page’, ‘Level page’, and ‘Game Over’ page. Remember to place the clickable actions in the ‘Level page’ and a button to restart the game.
+5/12 starts creating a different speed for how fast each “enemy” - “rain drops” will be dropped for each level. Starting slow in level 1 and then the speed will accelerate within the next levels.
 
-4/27  Create a code in order to make a playable and functional game. Only use shapes (rectangles or ellipses) at the moment so I can have my full attention on the functionality of the game before making an art style for the game.
 
-4/28 Continue to create a code for the game to be functional.
+5/14 add any additional functions that would allow the game to be properly played, such as additional coding.
 
-4/29 Check back with the game and debug and test the software in order for the game to run smoothly.
 
-4/30 Create an aesthetic for the game: Create art style for characters and change colors for the game.
+5/15 Clean up code for the repository and add any elements( texts, colors, etc.) that would suit the game - especially for the “title”, “tutorial”, “You Win”, and “game over” pages.  
 
-5/1 Do some finishing touches. Add or remove any unwanted coding or art.
+5/17 Change the score system either keep it as is or change it to “time frame score”
+
+5/19 debug any faulties, also ask for a second opinion from others to see if their should be any changes to the code
+
+5/20 reorganize code once more and clean up or remove any unnecessary coding. Also center all functions including for how the game will appear
