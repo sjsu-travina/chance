@@ -1,5 +1,7 @@
 'use strict';
 
+// var begin;
+
 let state ='title';
 let cnv;
 let points = 0;
@@ -39,6 +41,24 @@ function setup(){
   //coins[0] = new Coin();
   coins.push(new Coin());
   enemies.push(new Enemy());
+
+//   // clickable "begin" button - ONLY TEXT TOGETHER
+//   begin = new Clickable();
+//   begin.locate(200, 360);
+//   begin.resize(100, 50);
+//   begin.text = "begin";
+//   begin.onHover = function () {
+//   this.color = "#FFDE00";
+//   this.noTint = false;
+//   this.tint = "#FF0000";
+// }
+// begin.onOutside = function () {
+//   this.color = "#FFFFFF";
+//   this.noTint = true;
+// }
+// begin.onPress = function () {
+//   state = 'tutorial';
+// }
 }
 
 function draw() {
@@ -46,11 +66,11 @@ function draw() {
   switch (state){
     case 'title':
       title();
-      cnv.mouseClicked(titleMouseClicked);
+    cnv.mouseClicked(titleMouseClicked);
       break;
     case 'tutorial':
       tutorial();
-      cnv.mouseClicked(tutorialMouseClicked);
+    cnv.mouseClicked(tutorialMouseClicked);
       break;
     case 'level 1':
       level1();
@@ -123,6 +143,9 @@ function keyReleased(){
 function title(){
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
+
+  // keyPressed.draw();
+
 
   image(playerImg, w/2, h/1.8)
   image(coinImg, w/2, h/3.2, 200, 200);
