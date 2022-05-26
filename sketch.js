@@ -1,11 +1,15 @@
 'use strict';
 
-// var begin;
+var start;
+var begin;
+var nextlvl2;
+var nextlvl3;
+var restart;
 
 let state ='title';
 let cnv;
 let points = 0;
-let lives = 3;
+let lives = 2;
 let w = 600;
 let h = 600;
 let player = 1;
@@ -14,7 +18,9 @@ let enemies = [];
 let playerImg;
 let coinImg;
 let enemyImg;
+let darkImg;
 let bckgImg;
+let dayImg;
 let titleImg;
 
 
@@ -23,6 +29,7 @@ function preload(){
   playerImg = loadImage('assets/butterfly.png');
   coinImg = loadImage('assets/light1.png');
   enemyImg = loadImage('assets/rain1.png');
+
 }
 
 function setup(){
@@ -33,7 +40,7 @@ function setup(){
   //frameRate(200);
 
   imageMode(CENTER);
-  rectMode(CENTER);
+  // rectMode(CENTER);
   textFont('monospace');
 
   player = new Player();
@@ -42,23 +49,67 @@ function setup(){
   coins.push(new Coin());
   enemies.push(new Enemy());
 
-//   // clickable "begin" button - ONLY TEXT TOGETHER
-//   begin = new Clickable();
-//   begin.locate(200, 360);
-//   begin.resize(100, 50);
-//   begin.text = "begin";
-//   begin.onHover = function () {
-//   this.color = "#FFDE00";
-//   this.noTint = false;
-//   this.tint = "#FF0000";
-// }
-// begin.onOutside = function () {
-//   this.color = "#FFFFFF";
-//   this.noTint = true;
-// }
-// begin.onPress = function () {
-//   state = 'tutorial';
-// }
+  // clickable "start" button - ONLY TEXT from title to tutorial
+  start = new Clickable();
+    start.locate(w/2.130, h/1.5);
+    start.color = '#dddddd00';
+    start.text = "";
+    start.strokeWeight = 0;
+    start.image = playerImg;
+    start.fitImage = true;
+    start.width = 37;
+    start.height = 30;
+    start.onHover = function() {
+      start.imageScale = 2.7;
+      start.image = playerImg;
+    }
+    start.onPress = function() {
+      state = 'guide';
+    }
+    start.onOutside = function() {
+      start.imageScale = 2.5;
+      start.image = playerImg;
+}
+begin = new Clickable();
+  begin.locate(w/2.130, h/1.2);
+  begin.color = '#dddddd00';
+  begin.text = "";
+  begin.strokeWeight = 0;
+  begin.image = playerImg;
+  begin.fitImage = true;
+  begin.width = 37;
+  begin.height = 30;
+  begin.onHover = function() {
+    begin.imageScale = 2.7;
+    begin.image = playerImg;
+  }
+  begin.onPress = function() {
+    state = 'level 1';
+  }
+  begin.onOutside = function() {
+    begin.imageScale = 2.5;
+    begin.image = playerImg;
+}
+  restart = new Clickable();
+    restart.locate(w/2.130, h/1.5);
+    restart.color = '#dddddd00';
+    restart.text = "";
+    restart.strokeWeight = 0;
+    restart.image = playerImg;
+    restart.fitImage = true;
+    restart.width = 37;
+    restart.height = 30;
+    restart.onHover = function() {
+      restart.imageScale = 2.7;
+      restart.image = playerImg;
+    }
+    restart.onPress = function() {
+      state = 'title';
+    }
+    restart.onOutside = function() {
+      restart.imageScale = 2.5;
+      restart.image = playerImg;
+    }
 }
 
 function draw() {
@@ -66,15 +117,12 @@ function draw() {
   switch (state){
     case 'title':
       title();
-    cnv.mouseClicked(titleMouseClicked);
       break;
-    case 'tutorial':
-      tutorial();
-    cnv.mouseClicked(tutorialMouseClicked);
+    case 'guide':
+      tutorialStage();
       break;
     case 'level 1':
       level1();
-      cnv.mouseClicked(level1MouseClicked);
       break;
     case 'you win':
       youWin();
@@ -82,7 +130,7 @@ function draw() {
       break;
     case 'game over':
       gameOver();
-      cnv.mouseClicked(gameOverMouseClicked);
+    cnv.mouseClicked(gameOverMouseClicked);
       break;
     default:
       break;
@@ -90,15 +138,6 @@ function draw() {
 }
 
 function keyPressed() {
-// Press "s" to change state - change state not functional
-//   if (state === 'title' || state === 'you win') {
-//   if (key === 's' || key === 'S') {
-//   state = 'level l';
-// }
-// } else if (state === 'level 1') {
-//   if (key === 's' || key === 'S' ) {
-//
-// }
 
   if (keyCode == LEFT_ARROW){
     player.direction = 'left'
@@ -141,13 +180,13 @@ function keyReleased(){
 }
 
 function title(){
+  background(0);
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
+  // textAlign(LEFT);
+  start.draw();
 
-  // keyPressed.draw();
-
-
-  image(playerImg, w/2, h/1.8)
+  // image(playerImg, w/2, h/1.8)
   image(coinImg, w/2, h/3.2, 200, 200);
 
   strokeWeight(3);
@@ -160,19 +199,24 @@ function title(){
   noStroke();
   textSize(30);
   fill(255);
-  text('click anywhere to start', w/2, h/1.4);
+  text("Start", width / 2, height / 1.25);
 
 }
 
 function titleMouseClicked(){
-  console.log('canvas is clicked on title page');
-  state = 'tutorial'
+  // console.log('canvas is clicked on title page');
+  // state = 'guide'
 }
 
-function tutorial(){
-  image(titleImg,  w/2, h/2, 600, 600);
+function tutorialStage(){
+  background(0);
+  image(titleImg, w/2, h/2, 600, 600);
+
   fill(255);
+  push();
+  rectMode(CENTER);
   rect(width * .5, height * .345, 345, 135, 10);
+  pop();
 
 image(coinImg, 250, 165);
 image(enemyImg, 250, 206);
@@ -188,10 +232,10 @@ text(" Press ← → ↑ ↓ to move the butterfly", width/2, height * 0.42);
 
 fill(255);
 textSize(20);
-text("Help! Safely guide the butterfly through the storm. Its a cold and rainy day so try to avoid as much RAIN and collect the LIGHT to keep the butterfly warm. Safe travels!", width / 2, height / 1.8, 450);
+textAlign(CENTER);
+text("Help! Safely guide the butterfly through the storm. Its a cold and rainy day so try to avoid as much RAIN and collect the LIGHT to keep the butterfly warm. Safe travels!", width / 7.5, height / 1.8, 450);
 fill(255);
-textSize(20);
-text("Click anywhere to start", width / 2, height / 1.18);
+text("Start", width / 2, height / 1.05);
 
 
 strokeWeight(3);
@@ -201,20 +245,22 @@ textSize(40);
 textAlign(CENTER);
 text("Tutorial", width/2, height * 0.12);
 
-image(playerImg, w/2, h/1.11);
-
+begin.draw();
 }
 
 function tutorialMouseClicked(){
-  console.log('canvas is clicked on title page');
+  // console.log('canvas is clicked on title page');
   state = 'level 1'
 }
 
 function level1(){
+  background(0);
+
+  push();
+  imageMode(CENTER);
   imageMode(CENTER);
   image(bckgImg, w/2, h/2, 600, 600);
-  // imageMode(CENTER);
-  // image(bckgImg, w/2, h/2, 600, 600);
+  pop();
 
   if (random(1) <= 0.01){
     coins.push(new Coin());
@@ -272,27 +318,29 @@ function level1(){
   strokeWeight(3)
   stroke(255);
   fill(0);
+  textSize(30);
   text(`score: ${points} / 1000`, w/4, h - 30);
+  text('Level 1', w/2, h/8.5);
 
 // check point values to win or lose the game
-  if (points >= 1000){
+  if (points >= 100){
     state = 'you win';
   } else if (points <= -1){
     state = 'game over';
   }
-
 }
 
 function level1MouseClicked(){
-//   points++;
-//   console.log('points = + points');
+  points++;
+  console.log('points = + points');
 
-//   if (points >= 10){
-//     state = 'you win';
-//   }
+  if (points >= 10){
+    state = 'you win';
+  }
 }
 
 function youWin(){
+  background(0);
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
 
@@ -305,17 +353,28 @@ function youWin(){
   noStroke();
   textSize(30);
   fill(255);
-  text('click anywhere to restart', w/2, h / 1.5);
+  text('click to play again', w/2, h / 1.6);
 
   image(coinImg, w/2, h/2.8, 45, 50);
+
+  restart.draw();
+
 }
 
 function youWinMouseClicked(){
-  state = 'title';
-  points = 1;
+  console.log('canvas is clicked on you win page');
+
+
+      if (lives >= 10) { // this means they have 0 lives going into it b/c life already taken away in gameOver() function
+        lives++; // if you have a life, you lose one!
+        state = 'title';
+      }
+
+    points = 0;
 }
 
 function gameOver(){
+  background(0);
   imageMode(CENTER);
   image(titleImg, w/2, h/2, 600, 600);
 
@@ -336,7 +395,8 @@ function gameOver(){
     noStroke();
     textSize(30);
     fill(255);
-    text('click anywhere to play again', w/2, h / 1.5);
+    text('click to play again', w/2, h / 1.6);
+
 
   } else {
     // game over
@@ -348,17 +408,21 @@ function gameOver(){
     noStroke();
     fill(255);
     textSize(30);
-    text('click anywhere to restart', w/2, h / 1.5);
+    text('click to play again', w/2, h / 1.6);
+
+    restart.draw();
   }
 }
 
 function gameOverMouseClicked(){
+  // console.log('canvas is clicked on game over page');
+  // state = 'title'
+
     if (lives >= 0) { // this means they have 0 lives going into it b/c life already taken away in gameOver() function
       lives--; // if you have a life, you lose one!
       state = 'level 1';
-    } else {
-      state = 'title';
     }
 
   points = 0;
+
 }
