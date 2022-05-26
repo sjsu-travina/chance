@@ -293,7 +293,7 @@ function level1(){
   for (let i = coins.length - 1; i >= 0; i--){
     // check for collision with player
     if (dist(player.x, player.y, coins[i].x, coins[i].y) <= (player.r + coins[i].r) / 2){
-      points += 100;
+      points += 1000;
       console.log(points);
       coins.splice(i, 1);
     } else if (coins[i].y > h){
